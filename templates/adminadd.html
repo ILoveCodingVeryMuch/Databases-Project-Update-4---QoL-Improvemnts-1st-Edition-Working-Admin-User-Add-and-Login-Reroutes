@@ -1,22 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <!-- CS:2420 Group 3-->
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<form action="" method="post">
-    Username:<br>
-    <input type="text" name="Username" value="{{request.form.Username}}"><br>
-    Password:<br>
-    <input type="text" name="Pass" value="{{request.form.Pass}}"><br>
-    UserRole:<br>
-    <input type="text" name="UserRole" value="{{request.form.UserRole}}"><br>
-    First Name:<br>
-    <input type="text" name="FName" value="{{request.form.FName}}"><br>
-    Last Name:<br>
-    <input type="text" name="LName" value="{{request.form.LName}}"><br>
-    Email:<br>
-    <input type="text" name="Email" value="{{request.form.Email}}"><br>
-    Address:<br>
-    <input type="text" name="Address" value="{{request.form.Address}}"><br>
-    ContactDetail:<br>
-    <input type="text" name="ContactDetail" value="{{request.form.ContactDetail}}"><br>
-    Gender:<br>
-    <input type="text" name="Gender" value="{{request.form.Gender}}"><br><br>
-    <input type="submit" value="Submit">
-</form>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Group 3 - Admin Add User</title>
+    </head>
+    
+    <body>
+        <div class="col d-flex justify-content-center">
+            <div class="container-fluid">
+                <div class="card text-center w-90">
+                      <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                          <li class="nav-item">
+                            <a class="nav-link" href="/AdminHome">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#">Add User</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/AdminUpdate">Update User</a>
+                          </li>  
+                        </ul>
+                      </div>
+                    <div class="card-body">
+                        <h2>Add User</h2>
+                        <form action="" method="post">
+                            Username:<br>
+                            <input type="text" name="Username" value="{{request.form.Username}}"><br>
+                            Password:<br>
+                            <input type="text" name="Pass" value="{{request.form.Pass}}"><br>
+                            User Role:<br>
+                            <input type="text" name="UserRole" value="{{request.form.UserRole}}"><br>
+                            First Name:<br>
+                            <input type="text" name="FName" value="{{request.form.FName}}"><br>
+                            Last Name:<br>
+                            <input type="text" name="LName" value="{{request.form.LName}}"><br>
+                            Email:<br>
+                            <input type="text" name="Email" value="{{request.form.Email}}"><br>
+                            Address:<br>
+                            <input type="text" name="Address" value="{{request.form.Address}}"><br>
+                            ContactDetail:<br>
+                            <input type="text" name="ContactDetail" value="{{request.form.ContactDetail}}"><br>
+                            Gender:<br>
+                            <input type="text" name="Gender" value="{{request.form.Gender}}"><br><br>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

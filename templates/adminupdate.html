@@ -9,7 +9,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <title>Group 3 - Admin Home</title>
+        <title>Group 3 - Admin Update User</title>
     </head>
     
     <body>
@@ -19,20 +19,25 @@
                       <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                           <li class="nav-item">
-                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link" href="/AdminHome">Home</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="/AdminAdd">Add User</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="/AdminUpdate">Update User</a>
+                            <a class="nav-link active" href="#">Update User</a>
                           </li>  
                         </ul>
                       </div>
                     <div class="card-body">
-                        <h2>Admin Home</h2>
-                        <p>Welcome! Please click a tab to begin your work!</p>
-                        <a class="btn btn-primary" href="/login">Log Out</a>
+                        <h2>Update User</h2>
+                        <form action="" method="post">
+                            Username:<br>
+                            <input type="text" name="Username" value="{{request.form.Username}}"><br>
+                            Password:<br>
+                            <input type="text" name="Pass" value="{{request.form.Pass}}"><br><br>
+                            <input type="submit" value="Submit">
+                        </form>
                     </div>
                 </div>
             </div>
