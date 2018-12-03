@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <!-- CS:2420 Group 3-->
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Flask Intro - login page</title>
+    </head>
+    
+    <body>
+        <div class="col d-flex justify-content-center">
+            <div class="card text-center w-50">
+                <div class="card-header">
+                    <h2>User Login</h2>
+                </div>
+                <div class="card-body">
+                    <form action="http://localhost:5000/login" method="post">
+                        <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}">
+                        <br>
+                        <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}">
+                        <br>
+                        <input class="btn btn-default" type="submit" value="Login">
+                    </form>
+                    {% if error %}
+                        <p class="error"><strong>Error:</strong> {{ error }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

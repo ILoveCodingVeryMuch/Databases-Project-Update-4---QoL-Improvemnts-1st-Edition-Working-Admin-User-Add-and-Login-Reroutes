@@ -10,6 +10,20 @@ app = Flask(__name__)
 def AdminHome():
     return render_template('adminhome.html')
 
+@app.route('/AdminUpdate', methods = ['GET', 'POST'])
+#This function is currently under construction for SQL issues
+def AdminUpdate():
+    a = conn.cursor()
+    error = None
+    if request.method =='POST':
+        Name = request.form['Username']
+        Password = request.form['Pass']
+        passupsql = 'UPDATE UserTable SET Pass = %s WHERE Username = %s)'
+        a.execute(passupsql, (Password, Name))
+        conn.commit()
+        return redirect(url_for('AdminHome'))
+    return render_template('adminupdate.html', error = error)
+
 @app.route('/AdminAdd', methods = ['GET', 'POST'])
 def AdminAdd():
     a = conn.cursor()
@@ -59,7 +73,7 @@ def ShopSearch():
         print(results)
         #return(str(results))
         return redirect(url_for('PurchaseOrderCreate'))
-    return render_template('search.html', error = error)
+    return render_template('fancysearch.html', error = error)
 
 @app.route('/orderconfirm')
 def PurchaseOrderCreate():
@@ -88,6 +102,23 @@ def CreateGoodsReceipt():
 def VendorHome():
     return render_template('vendorhome.html')
 
+@app.route('/VendorWelcome', methods = ['GET', 'POST'])
+def VendorWelcome():
+    a = conn.cursor()
+    error = None
+    if request.method =='POST':
+        vname = request.form['VendorName']
+        print(vname)
+        minquant = request.form['MinOrderQuant']
+        quality = request.form['Quality']
+        email = request.form['Email']
+        phoneno = request.form['PhoneNo']
+        addsql = 'INSERT INTO VendorTable VALUES (%s, %s, %s)'
+        a.execute(addsql, (vname, minquant, quality, email, phoneno))
+        conn.commit()
+        return redirect(url_for('VendorHome'))
+    return render_template('vendoradd.html', error = error)
+
 #######################################
 @app.route('/')
 def home():
@@ -100,16 +131,16 @@ def login():
         usern = request.form['username']
         passw = request.form['password']
         a = conn.cursor()
-        sql = 'SELECT * FROM UserTable WHERE UserName = %s AND Pass = %s'
-        data = a.execute(sql, (usern, passw))
-        data2 = a.fetchone()
-        if data2[2] == "Admin":
+        sql = 'SELECT * FROM UserTable WHERE Username = %s AND Pass = %s'
+        a.execute(sql, (usern, passw))
+        data = a.fetchone()
+        if data[2] == "Admin":
             return redirect(url_for('AdminHome'))
-        elif data2[2] == "Shop":
+        elif data[2] == "Shop":
             return redirect(url_for('ShopHome'))
-        elif data2[2] == 'Manager':
+        elif data[2] == 'Manager':
             return redirect(url_for('ManagerHome'))
-        elif data2[2] == "Vendor":
+        elif data[2] == "Vendor":
             return redirect(url_for('VendorHome'))
         #....
         else:
